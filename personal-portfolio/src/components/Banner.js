@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Nav } from "react-bootstrap";
 import headerImg from "../assets/img/header-img.svg";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
+import { HashLink } from "react-router-hash-link";
+import { NavLink } from "react-router-dom";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -13,7 +15,7 @@ export const Banner = () => {
   // const [index, setIndex] = useState(1);
   const toRotate = ["Web Developer", "Application Developer"];
 
-  const period = 2000;
+  const period = 1000;
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -79,26 +81,29 @@ export const Banner = () => {
                   <p>
                     I am a passionate and enthusiastic frontend developer with a
                     strong foundation in HTML, CSS, JavaScript, Bootstrap, and
-                    React. I am eager
-                    to contribute my skills and enthusiasm to the creation of
-                    dynamic and user-friendly web applications.With a focus on
-                    clean and responsive design, I aim to provide exceptional
-                    user experiences across all devices. I stay up-to-date with
-                    the latest web development trends and technologies,
-                    constantly expanding my knowledge to deliver cutting-edge
-                    solutions.With the addition of React Native to my skill set,
-                    I am capable of developing mobile applications for both iOS
-                    and Android platforms using JavaScript. This expands my
-                    versatility as a developer and allows me to create seamless
-                    cross-platform experiencesI am excited to embark on my
-                    journey as a frontend developer and contribute to the
-                    ever-evolving world of web and mobile applications. I am
-                    confident in my ability to bring creativity, dedication, and
-                    a strong work ethic to any project I undertake.
+                    React. I am eager to contribute my skills and enthusiasm to
+                    the creation of dynamic and user-friendly web
+                    applications.With a focus on clean and responsive design, I
+                    aim to provide exceptional user experiences across all
+                    devices. I stay up-to-date with the latest web development
+                    trends and technologies, constantly expanding my knowledge
+                    to deliver cutting-edge solutions.With the addition of React
+                    Native to my skill set, I am capable of developing mobile
+                    applications for both iOS and Android platforms using
+                    JavaScript. This expands my versatility as a developer and
+                    allows me to create seamless cross-platform experiencesI am
+                    excited to embark on my journey as a frontend developer and
+                    contribute to the ever-evolving world of web and mobile
+                    applications. I am confident in my ability to bring
+                    creativity, dedication, and a strong work ethic to any
+                    project I undertake.
                   </p>
-                  <button onClick={() => console.log("connect")}>
-                    Let’s Connect <ArrowRightCircle size={25} />
-                  </button>
+
+                  <Nav.Link href="#connect">
+                    <button>
+                      Let’s Connect <ArrowRightCircle size={25} />
+                    </button>
+                  </Nav.Link>
                 </div>
               )}
             </TrackVisibility>

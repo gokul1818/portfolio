@@ -154,12 +154,13 @@ span.navbar-text {
   font-weight: 700;
   color: #fff;
   border: 1px solid #fff;
-  padding: 18px 34px;
+  padding: 10px 34px;
   font-size: 18px;
   margin-left: 18px;
 	position: relative;
 	background-color: transparent;
 	transition: 0.3s ease-in-out;
+  border-radius: 15px;
 }
 .navbar-text button span {
   z-index: 1;
@@ -173,6 +174,7 @@ span.navbar-text {
   left: 0;
   top: 0;
   z-index: -1;
+  border-radius: 12px;
   transition: 0.3s ease-in-out;
 }
 .navbar-text button:hover {
@@ -242,13 +244,27 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
+  border-radius: 15px;
   padding: 8px 10px;
+  cursor: none;
   background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
   display: inline-block;
 }
+.banner .tagline:hover {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  border-radius: 15px;
+  padding: 8px 10px;
+  background: linear-gradient(90.21deg, rgba(61, 41, 53, 0.5) -5.91%, rgba(161, 156, 188, 0.5) 111.58%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
 .banner h1 {
   font-size: 45px;
   font-weight: 700;
