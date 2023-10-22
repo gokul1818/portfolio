@@ -66,13 +66,6 @@ export const Banner = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
-                  <a
-                    href="https://drive.google.com/file/d/1Dm6YKyBDjxEMqrMwSNBvNz4cOAyIyVkO/view?usp=drivesdk"
-                    target="_blank"
-                    download="your-resume.pdf"
-                  >
-                    <span className="tagline">View CV</span>
-                  </a>
                   <h1>
                     {`Hi! I'm Gokul`}{" "}
                     <span
@@ -83,7 +76,13 @@ export const Banner = () => {
                       <span className="wrap">{text}</span>
                     </span>
                   </h1>
-
+                  <a
+                    href="https://drive.google.com/file/d/1Dm6YKyBDjxEMqrMwSNBvNz4cOAyIyVkO/view?usp=drivesdk"
+                    target="_blank"
+                    download="your-resume.pdf"
+                  >
+                    <span className="tagline">View CV</span>
+                  </a>
                   {/* <span className="wrap">{desc}</span> */}
                   <p>
                     I am a passionate and enthusiastic frontend developer with a
