@@ -15,10 +15,10 @@ export const Footer = () => {
                     <a href="https://www.linkedin.com/in/gokulakrishnan-b-2a7571241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">
                         <FaLinkedin className="text-2xl text-neutral-100 hover:text-gray-400 transition" />
                     </a>
-                    <a href="gokulakrishnan.developer.18@gmail.com" >
+                    <a href="mailto:gokulakrishnan.developer.18@gmail.com" >
                         <FaEnvelope className="text-2xl text-neutral-100 hover:text-gray-400 transition" />
                     </a>
-                    <a href="mailto:your.email@example.com">
+                    <a href="https://www.instagram.com/mr_rider.18?igsh=MXFqd29idW54eTV1ZQ==">
                         <FaInstagram className="text-2xl text-neutral-100 hover:text-gray-400 transition" />
                     </a>
                 </div>
