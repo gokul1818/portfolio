@@ -27,10 +27,10 @@ export const About = () => (
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="about-section flex flex-col md:flex-row  justify-center "
+        className="about-section flex flex-col md:flex-row sm:flex-col-reverse  justify-center "
     >
         {/* Skills Section */}
-        <div className=" w-2/5 md:w-2/5 bg-neutral-100 p-4 rounded-tl-lg rounded-bl-lg ">
+        <div className=" w-sm-96 md:w-2/5 bg-neutral-100 p-4 rounded-tl-lg rounded-bl-lg ">
             <h2 className="section-title text-lg font-semibold mb-3">Skills</h2>
             <ul className="space-y-3">
                 {skills.map((skill, index) => (
@@ -51,7 +51,7 @@ export const About = () => (
         </div>
 
         {/* About Me Section */}
-        <div className=" w-2/5 md:w-2/5 bg-neutral-100 p-4 rounded-tr-lg rounded-br-lg ">
+        <div className=" w-sm-96 md:w-2/5 bg-neutral-100 p-4 rounded-tr-lg rounded-br-lg ">
             <h2 className="section-title text-lg font-semibold mb-3">About Me</h2>
             <p className="section-text text-gray-800 leading-relaxed">
                 I am a Front-End Developer with 1.8+ years of experience specializing in React.js, JavaScript, and modern UI frameworks. I have a strong passion for building responsive, user-friendly web applications that enhance user experiences.

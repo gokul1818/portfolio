@@ -48,7 +48,7 @@ export const Contact = () => {
             className="contact-section flex flex-col">
             <h2 className="section-title text-lg font-semibold mb-4 text-center">Contact Me</h2>
             <div
-                className="flex flex-col md:flex-row items-center justify-center gap-10 p-6 bg-neutral-50 text-white rounded-lg shadow-md w-3/4  mx-auto"
+                className="flex flex-col md:flex-row items-center justify-center gap-10 p-6 bg-neutral-50 text-white rounded-lg shadow-md w-md-3/4 w:sm-96  mx-auto"
             >
                 {/* Image Section */}
                 <div className="w-full md:w-1/2 flex justify-center">
