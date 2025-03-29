@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import "../App.css";
-import contactUs from "../assets/contactUs.jpg";
+import contactUs from "../assets/contactus.jpg";
 
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
