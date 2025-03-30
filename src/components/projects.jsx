@@ -11,25 +11,25 @@ const projects = [
     { name: "Thangamayil", description: "A Next.js-based blogging platform with Markdown support.", imgSrc: "https://play-lh.googleusercontent.com/hMQypyXsb70kBcDUzhEDZQA7guUna4Spkb9rt9ehsdeRNjECECHkGtkstelmqggmbQ" },
 ];
 
-
 export const Projects = () => (
-    <section id="projects" className=" flex-col pt-20  overflow-hidden w-full   ">
-        <h1 className=" section-title text-lg text-center  mb-4">Projects</h1>
-        <div className="relative w-full overflow-hidden">
-            {/* Scrolling Container */}
-            <motion.div
-                className="flex gap-6"
-                animate={{ x: ["0%", "-100%"] }}
-                transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-            >
-                {[...projects, ...projects].map((project, index) => ( // Duplicate for seamless loop
-                    <div key={index} className="bg-neutral-100 text-white p-4 rounded-lg shadow-md min-w-[350px]">
-                        <img src={project.imgSrc} alt={project.name} className="w-full h-20 object-contain rounded-md" />
-                        <h3 className="text-md text-black font-semibold mt-2">{project.name}</h3>
-                        <p className="text-sm text-gray-600">{project.description}</p>
+    <section id="projects" className="flex-col pt-20 w-full">
+        <h1 className="section-title text-lg text-center mb-4">Projects</h1>
+        <div className="scroll-container">
+            <div className="scroll-content">
+                {[...projects, ...projects].map((project, index) => (
+                    <div key={index} className="scroll-item">
+                        <img
+                            src={project.imgSrc}
+                            alt={project.name}
+                            className="w-full h-16 object-contain rounded-md"
+                        />
+                        <h3 className="text-md text-black font-semibold mt-2">
+                            {project.name}
+                        </h3>
+                        <p className="text-sm text-gray-600 text-wrap">{project.description}</p>
                     </div>
                 ))}
-            </motion.div>
+            </div>
         </div>
     </section>
 );

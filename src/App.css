@@ -54,15 +54,19 @@ body {
   20% {
     transform: rotate(-5deg);
   }
+
   30% {
     transform: rotate(10deg);
   }
+
   40% {
     transform: rotate(5deg);
   }
+
   50% {
     transform: rotate(5deg);
   }
+
   100% {
     transform: rotate(10deg);
   }
@@ -167,5 +171,61 @@ nav {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-container {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 1rem;
+  min-width: 200%;
+  animation: scroll 15s linear infinite;
+}
+
+.scroll-item {
+  background-color: #f3f3f3;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 250px;
+  /* Adjust for mobile */
+  flex-shrink: 0;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+
+  .scroll-item {
+    max-width: 100px !;
+  }
+
+  .scroll-content {
+    animation-duration: 20s;
+    /* Slower for better readability */
   }
 }
