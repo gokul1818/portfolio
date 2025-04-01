@@ -20,6 +20,7 @@ export const Contact = () => {
 
         try {
             const response = await fetch("https://sweetserver.onrender.com/api/send-email", {
+            // const response = await fetch("http://localhost:4000/api/send-email", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
@@ -27,7 +28,7 @@ export const Contact = () => {
 
             const result = await response.json();
             if (result.success) {
-                alert("Email sent successfully!");
+                // alert("Email sent successfully!");
                 setFormData({ name: "", email: "", message: "" });
             } else {
                 alert("Failed to send email.");
