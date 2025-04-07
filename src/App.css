@@ -1,9 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap');
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Signika Negative", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   margin: 0%;
   padding: 0%;
 }
@@ -70,6 +74,10 @@ body {
   100% {
     transform: rotate(10deg);
   }
+}
+
+.skill-card {
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -161,6 +169,21 @@ nav {
   text-decoration: underline;
 }
 
+
+.blur-bg-box {
+  width: 20%;
+  height: 50%;
+  border-radius: 50%;
+  background: rgb(0, 204, 255);
+  /* light blue with transparency */
+  filter: blur(100px);
+  /* strong blur effect */
+  position: absolute;
+  top: 30%;
+  left: 20%;
+}
+
+
 /* Fade-in Animation */
 @keyframes fadeIn {
   0% {
@@ -200,7 +223,7 @@ nav {
 }
 
 .scroll-item {
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   padding: 1rem;
   border-radius: 10px;
   max-width: 250px;
@@ -228,4 +251,36 @@ nav {
     animation-duration: 20s;
     /* Slower for better readability */
   }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(00%);
+  }
+}
+
+.auto-scroll-inner {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-down 20s linear infinite;
+}
+
+.auto-scroll-inner-reverse {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-up 20s linear infinite;
 }

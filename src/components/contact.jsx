@@ -120,3 +120,171 @@ export const Contact = () => {
 
     );
 };
+
+
+
+//     "Languages": [
+//         {
+//             name: "HTML",
+//             icon: <FaHtml5 className="text-orange-500 w-8 h-8" />,
+//             level: 95,
+//         },
+//         {
+//             name: "CSS",
+//             icon: <FaCss3Alt className="text-blue-500 w-8 h-8" />,
+//             level: 90,
+//         },
+//         {
+//             name: "SCSS",
+//             icon: <FaSass className="text-pink-400 w-8 h-8" />,
+//             level: 85,
+//         },
+//     ],
+//     "Programming Languages": [
+//         {
+//             name: "JavaScript",
+//             icon: <FaJsSquare className="text-yellow-400 w-8 h-8" />,
+//             level: 90,
+//         },
+//         {
+//             name: "TypeScript",
+//             icon: <SiTypescript className="text-blue-600 w-8 h-8" />,
+//             level: 75,
+//         },
+//     ],
+//     "Front-End": [
+//         {
+//             name: "React",
+//             icon: <FaReact className="text-cyan-400 w-8 h-8" />,
+//             level: 90,
+//         },
+//         {
+//             name: "React Native",
+//             icon: <FaReact className="text-cyan-300 w-8 h-8" />,
+//             level: 85,
+//         },
+//         {
+//             name: "Next.js",
+//             icon: <SiNextdotjs className="text-black w-8 h-8" />,
+//             level: 60,
+//         },
+//     ],
+//     "UI Libraries & Tools": [
+//         {
+//             name: "Tailwind CSS",
+//             icon: <SiTailwindcss className="text-sky-400 w-8 h-8" />,
+//             level: 90,
+//         },
+//         {
+//             name: "Bootstrap",
+//             icon: <FaBootstrap className="text-purple-500 w-8 h-8" />,
+//             level: 75,
+//         },
+//         {
+//             name: "Material UI (MUI)",
+//             icon: <SiMui className="text-blue-500 w-8 h-8" />,
+//             level: 85,
+//         },
+//         {
+//             name: "Redux",
+//             icon: <SiRedux className="text-purple-600 w-8 h-8" />,
+//             level: 80,
+//         },
+//         {
+//             name: "React Query",
+//             icon: <SiReactquery className="text-red-400 w-8 h-8" />,
+//             level: 80,
+//         },
+//         {
+//             name: "Axios",
+//             icon: <SiAxios className="text-blue-500 w-8 h-8" />,
+//             level: 85,
+//         },
+//         {
+//             name: "Recharts",
+//             icon: <IoStatsChartSharp className="text-pink-500 w-8 h-8" />,
+//             level: 70,
+//         },
+//     ],
+//     "Back-End": [
+//         {
+//             name: "Node.js",
+//             icon: <FaNode className="text-green-600 w-8 h-8" />,
+//             level: 70,
+//         },
+//         {
+//             name: "Express.js",
+//             icon: <SiExpress className="text-gray-700 w-8 h-8" />,
+//             level: 65,
+//         },
+//         {
+//             name: "MongoDB",
+//             icon: <SiMongodb className="text-green-500 w-8 h-8" />,
+//             level: 70,
+//         },
+//     ],
+//     "Tools, IDEs & Platforms": [
+//         {
+//             name: "Git / GitHub",
+//             icon: <FaGitAlt className="text-red-500 w-8 h-8" />,
+//             level: 85,
+//         },
+//         {
+//             name: "VS Code",
+//             icon: <VscVscode className="text-blue-500 w-8 h-8" />,
+//             level: 90,
+//         },
+//         {
+//             name: "Xcode",
+//             icon: <SiXcode className="text-blue-500 w-8 h-8" />,
+//             level: 70,
+//         },
+//         {
+//             name: "Android Studio",
+//             icon: <FaAndroid className="text-green-600 w-8 h-8" />,
+//             level: 75,
+//         },
+//         {
+//             name: "Postman",
+//             icon: <SiPostman className="text-orange-600 w-8 h-8" />,
+//             level: 80,
+//         },
+//         {
+//             name: "Firebase",
+//             icon: <SiFirebase className="text-yellow-500 w-8 h-8" />,
+//             level: 75,
+//         },
+//         {
+//             name: "Figma",
+//             icon: <SiFigma className="text-pink-500 w-8 h-8" />,
+//             level: 70,
+//         },
+//         {
+//             name: "Vercel",
+//             icon: <SiVercel className="text-black w-8 h-8" />,
+//             level: 80,
+//         },
+//         {
+//             name: "NPM",
+//             icon: <SiNpm className="text-red-600 w-8 h-8" />,
+//             level: 85,
+//         },
+//         {
+//             name: "Vite",
+//             icon: <SiVite className="text-purple-400 w-8 h-8" />,
+//             level: 80,
+//         },
+//     ],
+//     "Operating Systems": [
+//         {
+//             name: "Windows",
+//             icon: <FaWindows className="text-blue-500 w-8 h-8" />,
+//             level: 95,
+//         },
+//         {
+//             name: "macOS",
+//             icon: <FaApple className="text-gray-800 w-8 h-8" />,
+//             level: 90,
+//         },
+//     ],
+// };
