@@ -4,6 +4,7 @@ import { FaDownload, FaEnvelope } from "react-icons/fa";
 import { FaBagShopping, FaEarthAsia } from "react-icons/fa6";
 import "../App.css";
 import avatar from "../assets/avatar.jpg";
+import { SiJirasoftware } from "react-icons/si";
 const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
@@ -66,25 +67,25 @@ export const Home = () => {
 
                         {/* Job */}
                         <div className="flex items-center">
-                            <FaBagShopping className="text-2xl text-amber-900 mr-3" />
+                            <SiJirasoftware  className="text-2xl text-white mr-3" />
                             <span>Software Engineer at Doodleblue</span>
                         </div>
 
                         {/* Email */}
                         <div onClick={handleCopy} className="flex items-center cursor-pointer">
                             <FaEnvelope className="text-2xl text-red-400 mr-3" />
-                            <span>
-                                gokulakrishnan.developer18@gmail.com
-                            </span>
-                            {copied && (
-                                <span className=" ms-3 text-xs bg-black text-white px-2 py-1 rounded-md">
+                            {!copied ?
+                                <span>
+                                    gokulakrishnan.developer18@gmail.com
+                                </span> :
+                                <span className=" ms-3 text-xs bg-black text-green-500 px-2 py-1 rounded-md">
                                     Copied!
                                 </span>
-                            )}
+                            }
                         </div>
                         {/* Download Resume */}
                         <div className="flex items-center">
-                            <FaDownload className="text-2xl text-black-100 mr-3" />
+                            <FaDownload className="text-2xl text-green-600 mr-3" />
                             <a href="../../public/gokulakrishnanResume.pdf" download target="_blank" className="text-black-600">
                                 Download My Resume
                             </a>
