@@ -34,7 +34,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen  text-gray-900">
+    <div className="min-h-screen  text-gray-900 text-white">
       {/* Sticky Navbar with Dynamic Background */}
       <nav style={{}} className={`fixed  w-full p-4 z-50 transition-all duration-300 ${navbar ? " shadow-md bg-white/30 backdrop-blur-sm" : "bg-transparent"}`}>
         <div className={"flex justify-center space-x-6"}>
@@ -46,7 +46,7 @@ const App = () => {
       </nav>
 
       {/* Page Sections */}
-      <div className="pt-1 h-[100%] bg-linear-to-t from-blue-100 to-blue-50   ">
+      <div className="pt-1 h-[100%] bg-linear-to-t from-gray-700 to-gray-700   ">
         <Home />
         <About />
         <Projects />

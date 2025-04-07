@@ -64,26 +64,28 @@ export const About = () => (
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="about-section flex flex-col  justify-center items-center "
+        className="about-section flex flex-col  justify-center items-center  py-0"
     >
         {/* About Me Section */}
         <div className=" w-sm-96 md:w-3/5  p-4  ">
             <h2 className="section-title text-lg font-semibold mb-3">About Me</h2>
-            <p className="section-text text-gray-800 leading-relaxed">
-                I am a Front-End Developer with 1.8+ years of experience specializing in React.js, JavaScript, and modern UI frameworks. I have a strong passion for building responsive, user-friendly web applications that enhance user experiences.
+            <p className="text-white-800 text-md leading-relaxed">
+                I am a Front-End Developer with 2+ years of experience specializing in React.js, JavaScript, and modern UI frameworks. I have a strong passion for building responsive, user-friendly web applications that enhance user experiences.
 
                 My expertise includes React.js, TypeScript, Next.js, Redux, and UI frameworks like Tailwind CSS and Bootstrap. I am skilled in API integrations, state management, and performance optimization. Additionally, I have a growing interest in React Native and backend technologies like Node.js and MongoDB.
 
                 I thrive in agile environments, collaborating with teams to create scalable applications. My goal is to continuously learn, adapt, and deliver high-quality code that solves real-world problems.
             </p>
         </div>
-        <div className="w-sm-96 md:w-2/5 p-4">
+        <div className="w-sm-96 md:w-3/5 p-4">
             <h2 className="section-title text-lg font-semibold mb-3">Skills</h2>
 
-            <div className="relative h-80 overflow-hidden">
+            <div className="relative h-96 overflow-hidden  rounded-lg  show-shadow-lg bg-gradient-to-b from-gray-700 to-gray-800 p-4">
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-100 to-blue-50 opacity-30  blur-bg-circle"></div>
+
                 {/* Gradient Overlays */}
-                <div className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-blue-100 via-blue-100 to-transparent z-10" />
-                <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-blue-100 via-blue-100 to-transparent z-10" />
+                {/* <div className="absolute top-0 left-0 w-full h-10 bg-gradient-to-b from-gray-700 via-gray-900 to-transparent z-10" /> */}
+                {/* <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-gray-700 via-gray-900 to-transparent z-10" /> */}
 
                 {/* Columns with Independent Scroll */}
                 <div className="grid grid-cols-3 gap-4 h-full">

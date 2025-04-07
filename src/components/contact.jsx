@@ -57,7 +57,7 @@ export const Contact = () => {
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-full md:w-1/2 bg-cyan-50 p-6 rounded-lg shadow-lg">
+                <div className="w-full md:w-1/2 bg-[#e6f8fc] p-6 rounded-lg shadow-lg">
 
                     <form onSubmit={handleSubmit} className="w-full flex flex-col space-y-4 text-start">
                         {/* Name Input */}
@@ -109,7 +109,7 @@ export const Contact = () => {
                         <motion.button
                             type="submit"
 
-                            className="bg-teal-500  hover:bg-teal-700 cursor-pointer text-white font-semibold py-2 rounded-md transition-all"
+                            className="bg-[#31b6d6]  hover:bg-[#0d9cbf] cursor-pointer text-white font-semibold py-2 rounded-md transition-all"
                         >
                             Send Message
                         </motion.button>
