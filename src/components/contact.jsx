@@ -1,16 +1,21 @@
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { motion, useInView } from "framer-motion";
+import React, { useRef, useState } from "react";
 import "../App.css";
 import contactUs from "../assets/contactus.jpg";
 
-const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
+
 
 export const Contact = () => {
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { duration: 2, ease: "easeInOut" }
+        }
+    }
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -42,21 +47,22 @@ export const Contact = () => {
     return (
         <motion.section
             id="contact"
+            ref={ref}
             initial="hidden"
-            animate="visible"
             variants={fadeIn}
-            className="contact-section flex flex-col">
+            animate={inView ? "visible" : "hidden"}
+            className="contact-section flex flex-col" >
             <h2 className="section-title text-lg font-semibold mb-4 text-center">Contact Me</h2>
             <div
-                className="flex flex-col md:flex-row items-center justify-center gap-10 p-6 bg-neutral-50 text-white rounded-lg shadow-md w-md-3/4 w:sm-96  mx-auto"
+                className="flex flex-col md:flex-row items-center justify-center gap-10 p-6 bg-neutral-50 text-white rounded-lg shadow-md md:w-3/5 w:sm-96  mx-auto"
             >
                 {/* Image Section */}
                 <div className="w-full md:w-1/2 flex justify-center">
-                    <img src={contactUs} alt="Contact Us" className="rounded-lg  w-full max-w-sm object-cover" />
+                    <img src={contactUs} alt="Contact Us" className="rounded-lg   w-[300px] h-[300px] object-contain" />
                 </div>
 
                 {/* Contact Form */}
-                <div className="w-full md:w-1/2 bg-[#e6f8fc] p-6 rounded-lg shadow-lg">
+                <div className="w-full md:w-1/2  p-6 rounded-lg shadow-lg">
 
                     <form onSubmit={handleSubmit} className="w-full flex flex-col space-y-4 text-start">
                         {/* Name Input */}
@@ -115,7 +121,7 @@ export const Contact = () => {
                     </form>
                 </div>
             </div >
-        </motion.section>
+        </motion.section >
 
     );
 };

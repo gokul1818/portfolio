@@ -10,8 +10,6 @@ const fadeIn = {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-
-
 export const Home = () => {
     const [copied, setCopied] = useState(false);
     const handleCopy = () => {
@@ -47,12 +45,12 @@ export const Home = () => {
                         Hello, I'm <span className="text-primary">GokulaKrishnan</span> <span className="text-shake">🤚</span>
                     </h1>
                     <motion.p
-                        className="text-lg text-gray-700 mt-2"
+                        className="text-lg text-gray-200 mt-2"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 0.5 }}
                     >
-                        Frontend Developer | React Js | React-Native
+                         React Js | React-Native | Node Js | Express Js | MongoDB 
                     </motion.p>
 
 

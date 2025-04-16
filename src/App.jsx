@@ -6,15 +6,7 @@ import { Home } from "./components/home";
 import { Projects } from "./components/projects";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
-
-
-
-
-
+import { FaArrowUp } from "react-icons/fa";
 
 const App = () => {
   const [navbar, setNavbar] = useState(false);
@@ -36,7 +28,7 @@ const App = () => {
   return (
     <div className="min-h-screen  text-gray-900 text-white">
       {/* Sticky Navbar with Dynamic Background */}
-      <nav style={{}} className={`fixed  w-full p-4 z-50 transition-all duration-300 ${navbar ? " shadow-md bg-white/30 backdrop-blur-sm" : "bg-transparent"}`}>
+      <nav className={`fixed md:block hidden  w-full p-4 z-50 transition-all duration-300 ${navbar ? " shadow-md bg-white/30 backdrop-blur-sm" : "bg-transparent"}`}>
         <div className={"flex justify-center space-x-6"}>
           <Link to="home" smooth={true} className="nav-link">Home</Link>
           <Link to="about" smooth={true} className="nav-link">About</Link>
@@ -53,7 +45,15 @@ const App = () => {
         <Contact />
         <Footer />
       </div>
-    </div >
+      {navbar &&
+        <div className="fixed bottom-4 right-4 bg-gray-800 p-2 rounded-xl shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <FaArrowUp />
+        </div>
+      }
+    </div>
+
   );
 };
 

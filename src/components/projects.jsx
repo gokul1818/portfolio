@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, useInView } from "framer-motion";
+import React, { useRef } from "react";
 import "../App.css";
 
 const projects = [
@@ -11,25 +11,49 @@ const projects = [
     { name: "Thangamayil", description: "A Next.js-based blogging platform with Markdown support.", imgSrc: "https://play-lh.googleusercontent.com/hMQypyXsb70kBcDUzhEDZQA7guUna4Spkb9rt9ehsdeRNjECECHkGtkstelmqggmbQ" },
 ];
 
-export const Projects = () => (
-    <section id="projects" className="flex-col pt-20 w-full">
-        <h1 className="section-title text-lg text-center mb-4">Projects</h1>
-        <div className="scroll-container">
-            <div className="scroll-content">
-                {[...projects, ...projects].map((project, index) => (
-                    <div key={index} className="scroll-item">
+export const Projects = () => {
+    const ref = useRef();
+    const inView = useInView(ref, { once: true });
+    const fadeIn = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { duration: 2, ease: "easeInOut" }
+        }
+    };
+    return (
+        <motion.section
+            ref={ref}
+            initial="hidden"
+            variants={fadeIn}
+            animate={inView ? "visible" : "hidden"}
+            id="projects" className="flex-col pt-20 w-full">
+            <h1 className="section-title text-lg text-center mb-4">Projects</h1>
+            <div className="scroll-container  w-sm-96  w-3/5 p-4 ">
+                {/* <div className="scroll-content"> */}
+                {projects.map((project, index) => (
+                    <div key={index} className="scroll-item relative bg-gray-800">
+                        <div className="bg-gray-400 blur-xl h-16 " >
+                            <img
+                                src={project.imgSrc}
+                                alt={project.name}
+                                className="w-full opacity-50  h-16 object-contain rounded-md"
+                            />
+                        </div>
                         <img
                             src={project.imgSrc}
                             alt={project.name}
-                            className="w-full h-16 object-contain rounded-md"
+                            className="absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/5 h-16 object-contain rounded-md"
                         />
-                        <h3 className="text-md text-black font-semibold mt-2">
+
+                        <h3 className="text-md text-gray-300 font-semibold mt-2">
                             {project.name}
                         </h3>
-                        <p className="text-sm text-gray-600 text-wrap">{project.description}</p>
+                        <p className="text-sm text-gray-400 text-wrap">{project.description}</p>
                     </div>
                 ))}
             </div>
-        </div>
-    </section>
-);
+            {/* </div> */}
+        </motion.section>
+    )
+}

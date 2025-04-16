@@ -181,6 +181,7 @@ nav {
   top: 30%;
   left: 20%;
 }
+
 .blur-bg-circle {
   width: 50%;
   height: 50%;
@@ -217,26 +218,30 @@ nav {
 }
 
 .scroll-container {
-  display: flex;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 100%;
+  display: grid;
+  gap: 10px;
   position: relative;
+  justify-content: center;
+  margin: auto;
+  place-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .scroll-content {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
   min-width: 200%;
   animation: scroll 15s linear infinite;
 }
 
 .scroll-item {
-  background-color: #ffffff;
+  cursor: pointer;
   padding: 1rem;
   border-radius: 10px;
   max-width: 250px;
   /* Adjust for mobile */
+  height: 200px;
   flex-shrink: 0;
 }
 
