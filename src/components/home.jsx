@@ -11,27 +11,29 @@ export const Home = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
-  // ../../public/fonts/roboto.json
+
   return (
     <section
       id="home"
-      className="relative flex flex-col items-center justify-center min-h-screen text-[#0e3140] overflow-hidden z-10 "
+      className="relative flex flex-col items-center justify-center min-h-screen text-[#0e3140] overflow-hidden z-10 px-4"
     >
-      <div className="text-left">
-        <NameRise2D text="GOKULAKRISHNAN" />
-        <p className="text-lg text-#0e3140 mt-2">
-          React Js | React-Native | Node Js | Express Js | MongoDB
-        </p>
+      <div className="w-full max-w-2xl">
+        <div className="text-center sm:text-left">
+          <NameRise2D text="GOKULAKRISHNAN" className="text-xl sm:text-3xl mx-auto sm:mx-0" />
+          <p className="text-base sm:text-lg text-[#0e3140] mt-2">
+            React Js | React-Native | Node Js | Express Js | MongoDB
+          </p>
+        </div>
 
         {/* Info Section */}
-        <div className="flex flex-col gap-4 mt-4">
+        <div className="flex flex-col gap-4 mt-6 sm:mt-8 text-sm sm:text-base">
           <div className="flex items-center">
-            <FaEarthAsia className="text-2xl text-[#411b82] mr-3" />
+            <FaEarthAsia className="text-xl sm:text-2xl text-[#411b82] mr-3" />
             <span>Based in India</span>
           </div>
 
           <div className="flex items-center">
-            <SiJirasoftware className="text-2xl text-[#411b82] mr-3" />
+            <SiJirasoftware className="text-xl sm:text-2xl text-[#411b82] mr-3" />
             <span>Software Engineer at Doodleblue</span>
           </div>
 
@@ -39,18 +41,20 @@ export const Home = () => {
             onClick={handleCopy}
             className="flex items-center cursor-pointer"
           >
-            <FaEnvelope className="text-2xl text-[#411b82] mr-3" />
+            <FaEnvelope className="text-xl sm:text-2xl text-[#411b82] mr-3" />
             {!copied ? (
-              <span>gokulakrishnan.developer18@gmail.com</span>
+              <span className="break-all">
+                gokulakrishnan.developer18@gmail.com
+              </span>
             ) : (
-              <span className="ms-3 text-xs  text-[#411b82] px-2 py-1 rounded-md">
+              <span className="text-xs text-[#411b82] px-2 py-1 rounded-md">
                 Copied!
               </span>
             )}
           </div>
 
           <div className="flex items-center">
-            <FaDownload className="text-2xl text-[#411b82] mr-3" />
+            <FaDownload className="text-xl sm:text-2xl text-[#411b82] mr-3" />
             <a
               href="/gokulakrishnanResume.pdf"
               download

@@ -69,7 +69,7 @@ const App = () => {
     } else {
       setShowPrompt(true);
     }
-  }, [savedName, sendMessageWithLocation]);
+  }, [savedName,]);
 
   if (showPrompt) {
     return (
