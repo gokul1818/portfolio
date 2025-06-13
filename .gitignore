@@ -22,4 +22,7 @@ Thumbs.db
 # VS Code settings
 .vscode/
 .idea/
+# .gitignore
+.env
+
 

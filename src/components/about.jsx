@@ -1,11 +1,11 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
-import "../App.css";
-import { FaAndroid, FaApple, FaBootstrap, FaCss3Alt, FaGitAlt, FaHtml5, FaJsSquare, FaNode, FaReact, FaSass, FaWindows } from "react-icons/fa";
-import { SiAxios, SiExpress, SiFigma, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiNpm, SiPostman, SiReactquery, SiRedux, SiTailwindcss, SiTypescript, SiVercel, SiVite, SiXcode } from "react-icons/si";
-import { IoStatsChartSharp } from "react-icons/io5";
-import { VscVscode } from "react-icons/vsc";
 import dayjs from "dayjs";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { FaAndroid, FaApple, FaBootstrap, FaCss3Alt, FaGitAlt, FaHtml5, FaJsSquare, FaNode, FaReact, FaSass, FaWindows } from "react-icons/fa";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { SiAxios, SiExpress, SiFigma, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiNpm, SiPostman, SiReactquery, SiRedux, SiTailwindcss, SiTypescript, SiVercel, SiVite, SiXcode } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
+import "../App.css";
 
 const skills = [
     // Languages
@@ -111,11 +111,11 @@ export const About = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={fadeIn}
-            className="about-section flex flex-col  justify-center items-center  py-0"
+            className="about-section flex flex-col text-[#fea6ab]  justify-center items-center  py-0"
         >
             {/* About Me Section */}
             <div className=" w-sm-96 md:w-3/5  p-4  ">
-                <h2 className="section-title text-lg font-semibold mb-3">About Me</h2>
+                <h2 className="section-title !text-[#d72a46] text-lg font-semibold mb-3">About Me</h2>
                 <p className="text-white-800 text-md leading-relaxed">
                     I am a Front-End Developer with 2+ years of experience specializing in React.js, JavaScript, and modern UI frameworks. I have a strong passion for building responsive, user-friendly web applications that enhance user experiences.
 
@@ -125,16 +125,16 @@ export const About = () => {
                 </p>
             </div>
             <div className="w-sm-96 md:w-3/5 p-4">
-                <h2 className="section-title text-lg font-semibold mb-3">Skills</h2>
+                <h2 className="section-title text-lg font-semibold mb-3 !text-[#d72a46]">Skills</h2>
 
-                <div className="relative h-96 overflow-hidden  rounded-lg  show-shadow-lg bg-gradient-to-b from-gray-700 to-gray-800 p-4">
-                    <div className="absolute inset-0 bg-gradient-to-b from-blue-100 to-blue-50 opacity-30  blur-bg-circle"></div>
+                <div className="relative text-[#d72a46] h-96 overflow-hidden  rounded-lg  show-shadow-lg bg-[#fea6ab55] p-4">
+                    <div className="absolute inset-0 bg-[#d72a46] opacity-30  blur-bg-circle"></div>
                     <div className="grid grid-cols-3 gap-4 h-full">
                         <div className="auto-scroll-inner">
                             {skills.concat(skills).map((skill, index) => (
                                 <div key={`down-1-${index}`} className="flex flex-col items-center text-center text-xs my-2">
                                     {skill.icon}
-                                    <span className="mt-1 font-medium">{skill.name}</span>
+                                    <span className="mt-1 font-medium text-[#d72a46]">{skill.name}</span>
                                 </div>
                             ))}
                         </div>
@@ -157,7 +157,7 @@ export const About = () => {
                     </div>
                 </div>
                 <div className="w-full mt-5">
-                    <h2 className="section-title text-lg font-semibold mb-3">Experience</h2>
+                    <h2 className="section-title text-lg font-semibold mb-3 !text-[#d72a46]">Experience</h2>
                     <div className="space-y-6">
                         {experiences.map((exp, index) => (
                             <motion.div
@@ -165,18 +165,18 @@ export const About = () => {
                                 initial="hidden"
                                 animate={inView ? "visible" : "hidden"}
                                 variants={fadeIn}
-                                className="bg-gray-800 p-4 rounded-lg shadow-md text-left"
+                                className="bg-[#fea6ab55] p-4 rounded-lg text-[#d72a46] shadow-md text-left"
                             >
                                 <div className="flex justify-between items-center mb-1">
-                                    <h3 className="text-lg font-semibold">
-                                        {exp.title} <span className="text-sm text-gray-400">({calculateDuration(exp.duration)})</span>
+                                    <h3 className="text-lg font-semibold ">
+                                        {exp.title} <span className="text-sm text-gray-600">({calculateDuration(exp.duration)})</span>
                                     </h3>
-                                    <span className="text-sm text-gray-400">{exp.duration}</span>
+                                    <span className="text-sm ">{exp.duration}</span>
                                 </div>
-                                <p className="text-sm text-gray-300 font-medium">
+                                <p className="text-sm text-gray-500 font-medium">
                                     {exp.company} - {exp.location}
                                 </p>
-                                <ul className="list-disc list-inside mt-2 text-sm text-gray-300 space-y-1">
+                                <ul className="list-disc list-inside mt-2 text-sm text-gray-400 space-y-1">
                                     {exp.description.map((point, i) => (
                                         <li key={i}>{point}</li>
                                     ))}

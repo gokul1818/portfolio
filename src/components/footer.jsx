@@ -5,7 +5,7 @@ export const Footer = () => {
     return (
         <footer className="bg-gray-900 text-white py-6 mt-10">
             <div className="container mx-auto flex flex-col items-center">
-                <p className="text-sm">&copy; {new Date().getFullYear()} Gokulakrishnan All Rights Reserved.</p>
+                {/* <p className="text-sm">&copy; {new Date().getFullYear()} Gokulakrishnan All Rights Reserved.</p> */}
 
                 {/* Social Icons */}
                 <div className="flex justify-center items-center gap-4 mt-4">
