@@ -146,7 +146,7 @@ const App = () => {
         <img
           src={avatar}
           alt="Profile"
-          className="w-auto h-[300px] fixed bottom-0 right-4  outline-png pointer-events-auto"
+          className="w-auto h-[150px] sm:h-[300px] fixed bottom-0 right-4  outline-png pointer-events-auto"
         />
       }
     </div>
