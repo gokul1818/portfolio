@@ -126,7 +126,7 @@ const App = () => {
       </nav>
       {/* Page Sections */}
       <div className="pt-1 h-[100%] bg-[#fdfffe]   ">
-        <ColorSparks />
+        {/* <ColorSparks /> */}
 
         <Home />
         <About />
