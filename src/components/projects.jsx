@@ -83,7 +83,7 @@ export const Projects = () => {
       className="flex-col pt-20 w-full"
     >
       <h1 className="section-title text-lg text-center mb-4 !text-[#d72a46]">Projects</h1>
-      <div className="scroll-container  w-sm-96  w-3/5 p-4 ">
+      <div className="scroll-container  sm:w-3/5  w-full p-4 ">
         {projects.map((project, index) => (
           <div key={index} className="scroll-item relative bg-[#fea6ab55]">
             <div className="bg-gray-100 blur-2xl h-16 ">

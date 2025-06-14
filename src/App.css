@@ -216,7 +216,7 @@ nav {
   justify-content: center;
   margin: auto;
   place-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 .scroll-content {
