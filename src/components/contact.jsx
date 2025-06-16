@@ -31,7 +31,7 @@ export const Contact = () => {
 
     try {
       const response = await fetch(
-        "https://sweetserver.onrender.com/api/send-email",
+        "https://my-portfolio-express-server.onrender.com/api/send-mail",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -84,7 +84,10 @@ export const Contact = () => {
           >
             {/* Name Input */}
             <div>
-              <label htmlFor="name" className="block text-sm text-black font-medium">
+              <label
+                htmlFor="name"
+                className="block text-sm text-black font-medium"
+              >
                 Name
               </label>
               <input
@@ -101,7 +104,10 @@ export const Contact = () => {
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm text-black font-medium">
+              <label
+                htmlFor="email"
+                className="block text-sm text-black font-medium"
+              >
                 Email
               </label>
               <input
@@ -118,7 +124,10 @@ export const Contact = () => {
 
             {/* Message Input */}
             <div>
-              <label htmlFor="message" className="block text-sm text-black font-medium">
+              <label
+                htmlFor="message"
+                className="block text-sm text-black font-medium"
+              >
                 Message
               </label>
               <textarea

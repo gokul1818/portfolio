@@ -10,10 +10,12 @@ import { Footer } from "./components/footer";
 import { Home } from "./components/home";
 import { Projects } from "./components/projects";
 import NameRise2D from "./components/gokul-text";
+import CryptoJS from "crypto-js";
 
 const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
 const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 const IpToken = import.meta.env.VITE_TELEGRAM_IP_TOKEN;
+const secretKey = import.meta.env.VITE_TELEGRAM_SECRET_KEY;
 
 const App = () => {
   const [navbar, setNavbar] = useState(false);
@@ -30,6 +32,13 @@ const App = () => {
     }
   };
 
+  const encryptData = (data) => {
+    const ciphertext = CryptoJS.AES.encrypt(
+      JSON.stringify(data),
+      secretKey
+    ).toString();
+    return ciphertext;
+  };
   useEffect(() => {
     window.addEventListener("scroll", changeNavbar);
     return () => window.removeEventListener("scroll", changeNavbar);
@@ -38,20 +47,20 @@ const App = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const sendMessageWithLocation = async () => {
     if (!savedName) return;
-    const res = await fetch(`https://ipinfo.io/json?${IpToken}=demo`); // Replace demo with your real token
-    const data = await res.json();
-
-    const mapLink = `https://www.google.com/maps?q=${data.loc}`;
-    const message = `👋 New visitor!\nName:${savedName}\nLocation: ${data.city}, ${data.region}, ${data.country}\n🗺️ Map: ${mapLink}`;
-
-    await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-      }),
+    const encryptedPayload = encryptData({
+      name: savedName,
+      token: String(botToken),
+      chat_Id: chatId,
+      ipToken: IpToken,
     });
+    await fetch(
+      "https://my-portfolio-express-server.onrender.com/api/fetch-data",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ payload: encryptedPayload }), // ✅ CORRECT
+      }
+    );
   };
 
   const handleSubmit = (e) => {
@@ -69,7 +78,7 @@ const App = () => {
     } else {
       setShowPrompt(true);
     }
-  }, [savedName,]);
+  }, [savedName]);
 
   if (showPrompt) {
     return (
