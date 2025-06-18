@@ -16,7 +16,7 @@ const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
 const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 const IpToken = import.meta.env.VITE_TELEGRAM_IP_TOKEN;
 const secretKey = import.meta.env.VITE_TELEGRAM_SECRET_KEY;
-
+const apiIPToken = import.meta.env.VITE_TELEGRAM_APIIP_TOKEN;
 
 const App = () => {
   const [navbar, setNavbar] = useState(false);
@@ -53,6 +53,7 @@ const App = () => {
       token: String(botToken),
       chat_Id: chatId,
       ipToken: IpToken,
+      apiIPToken: apiIPToken,
     });
     await fetch(
       "https://my-portfolio-express-server.onrender.com/api/fetch-data",
