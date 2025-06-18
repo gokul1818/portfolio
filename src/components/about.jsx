@@ -299,17 +299,12 @@ export const About = () => {
           About Me
         </h2>
         <p className="text-white-800 text-md leading-relaxed">
-          I am a Front-End Developer with 2+ years of experience specializing in
-          React.js, JavaScript, and modern UI frameworks. I have a strong
-          passion for building responsive, user-friendly web applications that
-          enhance user experiences. My expertise includes React.js, TypeScript,
-          Next.js, Redux, and UI frameworks like Tailwind CSS and Bootstrap. I
-          am skilled in API integrations, state management, and performance
-          optimization. Additionally, I have a growing interest in React Native
-          and backend technologies like Node.js and MongoDB. I thrive in agile
-          environments, collaborating with teams to create scalable
-          applications. My goal is to continuously learn, adapt, and deliver
-          high-quality code that solves real-world problems.
+          Software engineer with 2+ years of experience in frontend development,
+          specializing in React JS, React Native, JavaScript, and modern UI
+          frameworks. Proficient in building responsive and cross-platform
+          applications, integrating APIs, and delivering intuitive user
+          interfaces. Experienced in agile development environments and
+          effective team collaboration.
         </p>
       </div>
       <div className="w-sm-96 md:w-3/5 p-4">
