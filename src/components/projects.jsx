@@ -52,7 +52,7 @@ const projects = [
   },
   {
     name: "easyRewardz",
-    description: "A Next.js-based blogging platform with Markdown support.",
+    description: "SDK development",
     imgSrc:
       "http://www.easyrewardz.com/wp-content/uploads/2024/01/Easyrewardz-Logo.png",
   },
