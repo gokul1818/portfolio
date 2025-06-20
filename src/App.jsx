@@ -77,7 +77,7 @@ const App = () => {
     if (savedName) {
       setName(savedName);
       setShowPrompt(false);
-      // sendMessageWithLocation();
+      sendMessageWithLocation();
     } else {
       setShowPrompt(true);
     }
