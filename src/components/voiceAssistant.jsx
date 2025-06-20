@@ -6,6 +6,7 @@ import SpeechRecognition, {
 import { scroller } from "react-scroll";
 import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import assistantResponses from "./info.json";
+
 const VoiceAssistant = () => {
   const [active, setActive] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
@@ -88,7 +89,7 @@ const VoiceAssistant = () => {
       response: `You can contact Gokulakrishnan at ${assistantResponses.info.email}`,
     },
     {
-      keywords: ["contactNumber", "phone number"],
+      keywords: ["contactnumber", "phone number"],
       response: `+91 9445084727`,
     },
     {
@@ -108,7 +109,6 @@ const VoiceAssistant = () => {
 
     let response = "Sorry, I didn't understand that.";
 
-    // === External links ===
     if (
       command.includes("github") ||
       command.includes("git hub") ||
@@ -125,10 +125,7 @@ const VoiceAssistant = () => {
     } else if (command.includes("insta") || command.includes("instagram")) {
       window.open("https://www.instagram.com/mr_rider.18", "_blank");
       response = "Opening Instagram profile.";
-    }
-
-    // === Custom keyword-based actions ===
-    else {
+    } else {
       for (const cmd of commandActions) {
         if (cmd.keywords.some((kw) => command.includes(kw))) {
           if (cmd.action) cmd.action();
@@ -138,7 +135,6 @@ const VoiceAssistant = () => {
       }
     }
 
-    // === Speak the response and resume listening when done ===
     const utterance = new SpeechSynthesisUtterance(response);
     utterance.onend = () => {
       if (active) {
@@ -154,14 +150,14 @@ const VoiceAssistant = () => {
   };
 
   useEffect(() => {
-    const debounceTimer = setTimeout(() => {
+    const timer = setTimeout(() => {
       if (transcript && !listening && active && !isNavigating) {
         handleNavigationCommand(transcript);
       }
-    }, 1000); // 500ms debounce delay
+    }, 1000);
 
-    return () => clearTimeout(debounceTimer); // Cleanup on unmount or re-run
-  }, [transcript, listening, active, isNavigating, handleNavigationCommand]);
+    return () => clearTimeout(timer);
+  }, [transcript, listening, active, isNavigating]);
 
   useEffect(() => {
     if (active && !isNavigating) {
@@ -174,40 +170,38 @@ const VoiceAssistant = () => {
 
   const toggleListening = async () => {
     try {
-      // Request mic permission explicitly
-      await navigator.mediaDevices.getUserMedia({ audio: true });
+      await navigator.mediaDevices.getUserMedia({ audio: true }); // mic permission
       setActive((prev) => !prev);
       setIsNavigating(false);
       resetTranscript();
     } catch (err) {
-      console.error("Microphone access denied or not available:", err);
+      console.error("Microphone access denied:", err);
+      alert("Microphone access is required to use the voice assistant.");
     }
   };
 
   return (
     <>
-      {/* Toggle Button */}
       <div className="fixed bottom-14 right-4 z-[999]">
         <button
-          onClick={() => toggleListening()}
+          onClick={toggleListening}
           type="button"
-          className={`p-2 rounded-full cursor-pointer shadow-lg text-white transition-all duration-300 ${
-            listening ? "bg-gray-800 " : "bg-red-400"
+          className={`p-2 rounded-full shadow-lg text-white transition-all duration-300 ${
+            listening ? "bg-gray-800" : "bg-red-400"
           }`}
           title={listening ? "Listening..." : "Click to Speak"}
         >
-          {!listening ? (
-            <FaMicrophoneSlash size={20} />
-          ) : (
+          {listening ? (
             <FaMicrophone size={20} />
+          ) : (
+            <FaMicrophoneSlash size={20} />
           )}
         </button>
       </div>
 
       {(assistantReply || (listening && transcript)) && (
-        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-white text-black text-md px-4 py-2 rounded-sm shadow-md z-[999] max-w-[90%] text-center">
-          {assistantReply}
-          {transcript}
+        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded shadow-md z-[999] max-w-[90%] text-center">
+          {assistantReply || transcript}
         </div>
       )}
     </>
