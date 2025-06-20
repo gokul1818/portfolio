@@ -184,6 +184,7 @@ const VoiceAssistant = () => {
       <div className="fixed bottom-14 right-4 z-[999]">
         <button
           onClick={() => toggleListening()}
+          type="button"
           className={`p-2 rounded-full cursor-pointer shadow-lg text-white transition-all duration-300 ${
             listening ? "bg-gray-800 " : "bg-red-400"
           }`}
