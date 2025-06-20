@@ -149,7 +149,7 @@ const App = () => {
       {navbar && (
         <button
           type="button"
-          className="fixed bottom-4 right-4 bg-gray-800 p-2 rounded-xl shadow-lg cursor-pointer hover:bg-gray-700 transition duration-300"
+          className="fixed bottom-4 right-4 z-[999] bg-gray-800 p-2 cursor-pointer rounded-xl shadow-lg  hover:bg-gray-700 transition duration-300"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll to top"
         >
