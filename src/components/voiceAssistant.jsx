@@ -172,10 +172,16 @@ const VoiceAssistant = () => {
     }
   }, [active]);
 
-  const toggleListening = () => {
-    setActive(() => !active);
-    setIsNavigating(false);
-    resetTranscript();
+  const toggleListening = async () => {
+    try {
+      // Request mic permission explicitly
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+      setActive((prev) => !prev);
+      setIsNavigating(false);
+      resetTranscript();
+    } catch (err) {
+      console.error("Microphone access denied or not available:", err);
+    }
   };
 
   return (
