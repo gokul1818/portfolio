@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// VoiceAssistant.jsx
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -11,7 +11,12 @@ const VoiceAssistant = () => {
   const [active, setActive] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
   const [assistantReply, setAssistantReply] = useState("");
+  const [isClient, setIsClient] = useState(false);
   const { transcript, listening, resetTranscript } = useSpeechRecognition();
+
+  useEffect(() => {
+    setIsClient(true); // Ensures this code only runs in browser
+  }, []);
 
   const commandActions = [
     {
@@ -47,10 +52,6 @@ const VoiceAssistant = () => {
     {
       keywords: ["thank you"],
       response: "You're welcome!",
-    },
-    {
-      keywords: ["repay answer"],
-      response: "I can repeat or explain anything you say. Please be specific.",
     },
     {
       keywords: ["introduce you"],
@@ -89,7 +90,7 @@ const VoiceAssistant = () => {
       response: `You can contact Gokulakrishnan at ${assistantResponses.info.email}`,
     },
     {
-      keywords: ["contactnumber", "phone number"],
+      keywords: ["contactNumber", "phone number"],
       response: `+91 9445084727`,
     },
     {
@@ -102,27 +103,23 @@ const VoiceAssistant = () => {
     },
   ];
 
-  const handleNavigationCommand = async (text) => {
+  const handleCommand = async (text) => {
     const command = text.toLowerCase().trim();
     SpeechRecognition.stopListening();
     setIsNavigating(true);
-
     let response = "Sorry, I didn't understand that.";
 
-    if (
-      command.includes("github") ||
-      command.includes("git hub") ||
-      command.includes("go to github")
-    ) {
+    // External links
+    if (command.includes("github")) {
       window.open("https://github.com/gokul1818", "_blank");
       response = "Opening your GitHub profile.";
-    } else if (command.includes("linkedin") || command.includes("linked in")) {
+    } else if (command.includes("linkedin")) {
       window.open(
         "https://www.linkedin.com/in/gokulakrishnan-b-2a7571241/",
         "_blank"
       );
       response = "Opening LinkedIn profile.";
-    } else if (command.includes("insta") || command.includes("instagram")) {
+    } else if (command.includes("instagram")) {
       window.open("https://www.instagram.com/mr_rider.18", "_blank");
       response = "Opening Instagram profile.";
     } else {
@@ -135,8 +132,8 @@ const VoiceAssistant = () => {
       }
     }
 
-    const utterance = new SpeechSynthesisUtterance(response);
-    utterance.onend = () => {
+    const utter = new SpeechSynthesisUtterance(response);
+    utter.onend = () => {
       if (active) {
         SpeechRecognition.startListening({ continuous: false });
         setAssistantReply("");
@@ -144,41 +141,46 @@ const VoiceAssistant = () => {
       setIsNavigating(false);
     };
 
-    window.speechSynthesis.speak(utterance);
+    window.speechSynthesis.speak(utter);
     setAssistantReply(response);
     resetTranscript();
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (transcript && !listening && active && !isNavigating) {
-        handleNavigationCommand(transcript);
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    if (transcript && !listening && active && !isNavigating) {
+      const delay = setTimeout(() => handleCommand(transcript), 800);
+      return () => clearTimeout(delay);
+    }
   }, [transcript, listening, active, isNavigating]);
 
   useEffect(() => {
+    if (!isClient || !SpeechRecognition.browserSupportsSpeechRecognition()) return;
+
     if (active && !isNavigating) {
       SpeechRecognition.startListening({ continuous: false });
     } else {
       SpeechRecognition.stopListening();
       resetTranscript();
     }
-  }, [active]);
+  }, [active, isClient]);
 
   const toggleListening = async () => {
+    if (!isClient) return;
+
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true }); // mic permission
+      await navigator.mediaDevices.getUserMedia({ audio: true });
       setActive((prev) => !prev);
       setIsNavigating(false);
       resetTranscript();
-    } catch (err) {
-      console.error("Microphone access denied:", err);
-      alert("Microphone access is required to use the voice assistant.");
+    } catch (error) {
+      console.error("Mic permission denied:", error);
+      alert("Microphone access is required to use voice assistant.");
     }
   };
+
+  if (!isClient || !SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null; // Prevents rendering on server or unsupported browsers
+  }
 
   return (
     <>
@@ -186,21 +188,17 @@ const VoiceAssistant = () => {
         <button
           onClick={toggleListening}
           type="button"
-          className={`p-2 rounded-full shadow-lg z-[999] cursor-pointer text-white transition-all duration-300 ${
+          className={`p-2 rounded-full cursor-pointer shadow-lg text-white transition-all duration-300 ${
             listening ? "bg-gray-800" : "bg-red-400"
           }`}
           title={listening ? "Listening..." : "Click to Speak"}
         >
-          {listening ? (
-            <FaMicrophone size={20} />
-          ) : (
-            <FaMicrophoneSlash size={20} />
-          )}
+          {listening ? <FaMicrophone size={20} /> : <FaMicrophoneSlash size={20} />}
         </button>
       </div>
 
       {(assistantReply || (listening && transcript)) && (
-        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded shadow-md z-[999] max-w-[90%] text-center">
+        <div className="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-white text-black text-md px-4 py-2 rounded shadow-md z-[999] max-w-[90%] text-center">
           {assistantReply || transcript}
         </div>
       )}
