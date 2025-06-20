@@ -1,0 +1,50 @@
+{
+  "info": {
+    "name": "Gokulakrishnan",
+    "title": "Software Engineer",
+    "location": "Chennai, Tamil Nadu, India",
+    "based_in": "India",
+    "email": "gokulakrishnan.developer18@gmail.com",
+    "resume": "/gokulakrishnanResume.pdf",
+
+    "about": "Software engineer with 2+ years of experience in frontend development, specializing in React JS, React Native, JavaScript, and modern UI frameworks. Proficient in building responsive and cross-platform applications, integrating APIs, and delivering intuitive user interfaces. Experienced in agile development environments and effective team collaboration.",
+
+    "experience_summary": "Gokulakrishnan has over 2 years of experience in frontend and mobile development using React and React Native, having worked on various scalable and cross-platform projects at doodleblue Innovations.",
+
+    "experience": [
+      {
+        "company": "doodleblue Innovations",
+        "title": "Software Engineer",
+        "duration": "Aug 2023 – Present",
+        "location": "Chennai, Tamil Nadu, India",
+        "description": [
+          "Working on cross-platform applications using React JS and React Native.",
+          "Implemented UI components using SCSS, Bootstrap, Tailwind CSS, etc.",
+          "Collaborated with the team to build scalable features and optimize performance."
+        ]
+      },
+      {
+        "company": "doodleblue Innovations",
+        "title": "React Developer | React-Native (Intern)",
+        "duration": "Jan 2023 – Aug 2023",
+        "location": "Chennai, Tamil Nadu, India",
+        "description": [
+          "Contributed to building responsive web UIs using React and CSS.",
+          "Collaborated on frontend enhancements and bug fixing.",
+          "Worked with JavaScript, Bootstrap, and various UI libraries."
+        ]
+      }
+    ],
+
+    "skills": "Gokulakrishnan is skilled in a wide range of technologies including frontend, backend, and developer tools.",
+
+    "skills_summary": {
+      "languages": "He is proficient in HTML, CSS, SCSS, JavaScript, and TypeScript.",
+      "frontend": "He works with React, React Native, and Next.js to build responsive and cross-platform UIs.",
+      "ui_libraries": "He uses Tailwind CSS, Bootstrap, Material UI, Redux, React Query, Axios, and Recharts for modern user interfaces.",
+      "backend": "He is familiar with backend technologies such as Node.js, Express.js, and MongoDB.",
+      "tools": "He regularly works with Git, GitHub, VS Code, Xcode, Android Studio, Postman, Firebase, Figma, Vercel, NPM, and Vite.",
+      "operating_systems": "He is comfortable working on both Windows and macOS."
+    }
+  }
+}

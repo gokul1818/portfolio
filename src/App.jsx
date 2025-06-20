@@ -1,3 +1,4 @@
+import CryptoJS from "crypto-js";
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
 import { Link } from "react-scroll";
@@ -7,10 +8,10 @@ import ColorSparks from "./colorSpraks";
 import { About } from "./components/about";
 import { Contact } from "./components/contact";
 import { Footer } from "./components/footer";
+import NameRise2D from "./components/gokul-text";
 import { Home } from "./components/home";
 import { Projects } from "./components/projects";
-import NameRise2D from "./components/gokul-text";
-import CryptoJS from "crypto-js";
+import VoiceAssistant from "./components/voiceAssistant";
 
 const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
 const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
@@ -76,7 +77,7 @@ const App = () => {
     if (savedName) {
       setName(savedName);
       setShowPrompt(false);
-      sendMessageWithLocation();
+      // sendMessageWithLocation();
     } else {
       setShowPrompt(true);
     }
@@ -138,8 +139,8 @@ const App = () => {
       {/* Page Sections */}
       <div className="pt-1 h-[100%] bg-[#fdfffe]   ">
         {/* <ColorSparks /> */}
-
         <Home />
+        <VoiceAssistant />
         <About />
         <Projects />
         <Contact />
