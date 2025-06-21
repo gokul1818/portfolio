@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import assistantResponses from "./info.json";
 import { scroller } from "react-scroll";
 
-const VoiceAssistant = () => {
+const VoiceAssistantd = () => {
   const [transcript, setTranscript] = useState("");
   const [response, setResponse] = useState("");
   const [listening, setListening] = useState(false);
@@ -208,4 +208,4 @@ const VoiceAssistant = () => {
   );
 };
 
-export default VoiceAssistant;
+export default VoiceAssistantd;
