@@ -1,8 +1,6 @@
 import CryptoJS from "crypto-js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaArrowUp } from "react-icons/fa";
-import { Link } from "react-scroll";
-import "./App.css";
 import avatar from "./assets/avatar.png";
 import ColorSparks from "./colorSpraks";
 import { About } from "./components/about";
@@ -24,29 +22,29 @@ const App = () => {
   const [name, setName] = useState("");
   const [showPrompt, setShowPrompt] = useState(false);
   const savedName = localStorage.getItem("visitor_name");
-  // Change navbar background on scroll
 
-  const changeNavbar = () => {
-    if (window.scrollY >= 50) {
-      setNavbar(true);
-    } else {
-      setNavbar(false);
-    }
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToRef = (ref) => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const encryptData = (data) => {
-    const ciphertext = CryptoJS.AES.encrypt(
-      JSON.stringify(data),
-      secretKey
-    ).toString();
-    return ciphertext;
-  };
   useEffect(() => {
+    const changeNavbar = () => {
+      setNavbar(window.scrollY >= 50);
+    };
+
     window.addEventListener("scroll", changeNavbar);
     return () => window.removeEventListener("scroll", changeNavbar);
   }, []);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const encryptData = (data) => {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), secretKey).toString();
+  };
+
   const sendMessageWithLocation = async () => {
     if (!savedName) return;
     const encryptedPayload = encryptData({
@@ -61,7 +59,7 @@ const App = () => {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ payload: encryptedPayload }), // ✅ CORRECT
+        body: JSON.stringify({ payload: encryptedPayload }),
       }
     );
   };
@@ -110,59 +108,72 @@ const App = () => {
       </div>
     );
   }
+
   return (
-    <div className="min-h-screen relative text-[#411b82">
-      {/* Sticky Navbar with Dynamic Background */}
+    <div className="min-h-screen relative text-[#411b82]">
       <nav
-        className={`fixed md:block hidden  w-full p-4 z-[100px] transition-all duration-300  ${
+        className={`fixed md:block hidden w-full p-4 z-[100px] transition-all duration-300  ${
           navbar
-            ? " shadow-md bg-[#fea6ab55] backdrop-blur-sm"
+            ? "shadow-md bg-[#fea6ab55] backdrop-blur-sm"
             : "bg-transparent"
         }`}
       >
         <div className={"flex justify-center space-x-6"}>
-          <Link to="home" smooth={true} className="nav-link">
+          <button onClick={() => scrollToRef(homeRef)} className="nav-link">
             Home
-          </Link>
-
-          <Link to="about" smooth={true} className="nav-link">
+          </button>
+          <button onClick={() => scrollToRef(aboutRef)} className="nav-link">
             About
-          </Link>
-          <Link to="projects" smooth={true} className="nav-link">
+          </button>
+          <button onClick={() => scrollToRef(projectsRef)} className="nav-link">
             Projects
-          </Link>
-          <Link to="contact" smooth={true} className="nav-link">
+          </button>
+          <button onClick={() => scrollToRef(contactRef)} className="nav-link">
             Contact
-          </Link>
+          </button>
         </div>
       </nav>
-      {/* Page Sections */}
-      <div className="pt-1 h-[100%] bg-[#fdfffe]   ">
-        {/* <ColorSparks /> */}
-        <Home />
-        <About />
-        <Projects />
-        <Contact />
+
+      <div className="pt-1 h-[100%] bg-[#fdfffe]">
+        <div ref={homeRef}>
+          <Home />
+        </div>
+        <div ref={aboutRef}>
+          <About />
+        </div>
+        <div ref={projectsRef}>
+          <Projects />
+        </div>
+        <div ref={contactRef}>
+          <Contact />
+        </div>
         <Footer />
-        <VoiceAssistant />
+        <VoiceAssistant
+          refs={{
+            homeRef,
+            aboutRef,
+            projectsRef,
+            contactRef,
+          }}
+        />
       </div>
+
       {navbar && (
         <button
           type="button"
-          className="fixed bottom-4 right-4 z-[999] bg-gray-800 p-2 cursor-pointer rounded-xl shadow-lg  hover:bg-gray-700 transition duration-300"
+          className="fixed bottom-14 right-4 z-[999] bg-gray-800 p-2 cursor-pointer rounded-xl shadow-lg hover:bg-gray-700 transition duration-300"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Scroll to top"
         >
-          <FaArrowUp />
+          <FaArrowUp color="#ffffff" />
         </button>
       )}
-      {
-        <img
-          src={avatar}
-          alt="Profile"
-          className="w-auto h-[150px] sm:h-[300px] fixed bottom-0 right-4  outline-png pointer-events-auto"
-        />
-      }
+
+      <img
+        src={avatar}
+        alt="Profile"
+        className="w-auto h-[150px] sm:h-[300px] fixed bottom-0 right-4 pointer-events-auto"
+      />
     </div>
   );
 };

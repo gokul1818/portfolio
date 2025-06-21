@@ -1,34 +1,40 @@
-import React, { useState, useRef } from "react";
+import { useRef, useState } from "react";
+import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
 import assistantResponses from "./info.json";
-import { scroller } from "react-scroll";
 
-const VoiceAssistant = () => {
+const VoiceAssistant = ({ refs }) => {
   const [transcript, setTranscript] = useState("");
   const [response, setResponse] = useState("");
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef(null);
+  const { homeRef, aboutRef, projectsRef, contactRef } = refs;
+  const scrollToRef = (ref) => {
+    if (ref?.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      console.warn("Invalid ref passed to scrollToRef");
+    }
+  };
 
   const commandActions = [
     {
       keywords: ["home"],
-      action: () => scroller.scrollTo("home", { smooth: true, duration: 800 }),
+      action: homeRef,
       response: "Navigating to Home",
     },
     {
       keywords: ["about"],
-      action: () => scroller.scrollTo("about", { smooth: true, duration: 800 }),
+      action: aboutRef,
       response: "Navigating to About section",
     },
     {
       keywords: ["project"],
-      action: () =>
-        scroller.scrollTo("projects", { smooth: true, duration: 800 }),
+      action: projectsRef,
       response: "Navigating to Projects",
     },
     {
       keywords: ["contact"],
-      action: () =>
-        scroller.scrollTo("contact", { smooth: true, duration: 800 }),
+      action: contactRef,
       response: "Navigating to Contact section",
     },
     {
@@ -94,9 +100,19 @@ const VoiceAssistant = () => {
   ];
 
   const speak = (text) => {
-    window.speechSynthesis.cancel(); // cancel any previous speech
+    window.speechSynthesis.cancel(); // stop any existing speech
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
+
+    utterance.onend = () => {
+      console.log("Speech finished, restarting recognition...");
+      setTranscript("");
+      setResponse("");
+      recognitionRef.current?.start(); // start listening again
+      setListening(true);
+    };
+
     window.speechSynthesis.speak(utterance);
   };
 
@@ -106,6 +122,7 @@ const VoiceAssistant = () => {
     for (const cmd of commandActions) {
       if (cmd.keywords.some((kw) => command.includes(kw))) {
         setResponse(cmd.response);
+        scrollToRef(cmd.action);
         speak(cmd.response);
         matched = true;
         break;
@@ -180,14 +197,14 @@ const VoiceAssistant = () => {
   return (
     <div>
       {/* Microphone Button */}
-      <div className="fixed bottom-14 right-4 z-50">
+      <div className="fixed bottom-2 right-4 z-50">
         <button
           onClick={toggleListening}
-          className={`p-4 rounded-full text-white shadow-lg transition-all duration-300 ${
+          className={`p-2 rounded-full text-white shadow-lg transition-all duration-300 ${
             listening ? "bg-green-600" : "bg-gray-800"
           }`}
         >
-          {listening ? "🎤 Listening..." : "🎙️ Speak"}
+          {listening ? <FaMicrophone /> : <FaMicrophoneSlash />}
         </button>
       </div>
 
